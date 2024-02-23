@@ -1,0 +1,16 @@
+.tooltip {
+    opacity: 0;
+    background-color: #fff;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+}
+
+.color-dot {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border-radius: 10px;
+}

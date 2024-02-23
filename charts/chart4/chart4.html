@@ -1,0 +1,111 @@
+<div>
+    <button type="button" class="btn btn-primary help-button mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Help
+    </button>
+    <div class="container-fluid">
+        <h1 class="text-center heading-main">EXOPLANET PLAYGROUND</h1>
+        <div class="row">
+            <div id="myDataVis"><svg id="exo-svg"></svg></div>
+        </div>
+    </div>
+    <div class="controls-legends mt-5 pt-5 ml-2">
+        <h5 style="color: white;">Controls</h2>
+            <span>1992<input type="range" id="yearSlider" min="1992" max="2023" step="1" />2023</span>
+            <div class="mt-2 pb-2">
+                <button id="playButton" class="btn btn-success">Play</button>
+                <button id="pauseButton" class="btn btn-danger">Pause</button>
+            </div>
+            <h5  class="mt-4" id="current-year" style="color: white;">Year: <span id="year-display"></span></h4>
+            <h5 id="planet-count-title" style="color: white;">Planets discovered: <span id="planet-count"></span></h4>
+            <h5 class="mt-4" style="color: white;">Planet Types </h2>
+                <div>
+                    <div class="legend-container">
+                        <span class="color-dot"></span>
+                        <span class="legend-label">Gas Giant</span>
+                    </div>
+
+                    <div class="legend-container">
+                        <span class="color-dot"></span>
+                        <span class="legend-label">Super Earth</span>
+                    </div>
+
+                    <div class="legend-container">
+                        <span class="color-dot"></span>
+                        <span class="legend-label">Neptune-like</span>
+                    </div>
+
+                    <div class="legend-container">
+                        <span class="color-dot"></span>
+                        <span class="legend-label">Terrestrial</span>
+                    </div>
+
+                    <div class="legend-container">
+                        <span class="color-dot"></span>
+                        <span class="legend-label">Planet's Sun</span>
+                    </div>
+
+                </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Navigate the visualization</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to the Exoplanet Playground!</p>
+                    <p>
+                        Get ready to journey through the NASA Exoplanet Dataset, where we explore distant planets beyond
+                        our solar system.
+                    </p><p>This repository shares year wise discoveries from space missions and observatories, offering a
+                    unique peek into the diverse worlds out there.</p>
+                    <p>
+                        Join us on this cosmic adventure as we uncover the mysteries and diversity of exoplanetary
+                        systems in our galaxy. <br>
+                    </p>
+                    <div class="user-guide">
+                        <h5>Guide</h4>
+                        <ol>
+                          <li>
+                            View discovered planets and their respective discovery years at the top left corner of the visualization.
+                          </li>
+                          <li>
+                            <strong>Planet Information Tooltip:</strong> Hover over a planet to access detailed information in a tooltip. Details include planetary attributes and specifics about the discovery.
+                          </li>
+                          <li>
+                            <strong>Orbital Radius Representation:</strong> Proportional lines depict the orbital radius of each planet. Tooltip displays the orbital radius information upon hovering.
+                          </li>
+                          <li>
+                            <strong>Planet Size Representation:</strong> The circle size correlates to the planet's radius, calculated from the radius multiplier in combination with Earth or Jupiter's radius, depending on the data.
+                          </li>
+                          <li>
+                            <strong>Navigate by Year:</strong> Utilize the slider to explore exoplanet discoveries in specific years.
+                          </li>
+                          <li>
+                            <strong>Animation Feature:</strong> Engage the Play/Pause button to witness a chronological animation of exoplanet discoveries from 1992 to 2023.
+                          </li>
+                        </ol>
+                    
+                        <h5>Visualization Elements:</h4>
+                        <p>
+                          <strong>Marks:</strong> Line (Orbital Radius) and point (Planet)
+                          <br>
+                          <strong>Channels:</strong> Color: Hue(Planet Type) and Area (Planet Radius)
+                          <br>
+                          <strong>Attributes:</strong> Year, Planet Type, Planet Radius (calculated using Radius Multiplier and Comparative Planet), Orbital Radius
+                          <br>
+                          <strong>Interactions:</strong> Slider (Drag and Drop), Play/Pause (Temporal Visuals), Legends, Tooltips (Additional Inmformation)
+                        </p>
+                    
+                        <p>Explore and Enjoy the Journey Through Exoplanet Discoveries!</p>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

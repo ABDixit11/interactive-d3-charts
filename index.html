@@ -1,0 +1,162 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>D3.js Combined Charts</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      #chart-base-location {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">D3 Charts</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" onclick="reloadAndLoadChart('chart1')"
+              >Line Chart</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="reloadAndLoadChart('chart2')"
+              >Donut & Bar Chart</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="reloadAndLoadChart('chart3')"
+              >Beeswarm Chart</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="reloadAndLoadChart('chart4')"
+              >Exoplanet Playground</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content Container -->
+    <div class="container-fluid mt-5 pt-5">
+      <div id="chart-base-location"></div>
+    </div>
+
+    <!-- Bootstrap JavaScript and jQuery (you can replace these links with the versions you are using) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      function reloadAndLoadChart(chartId) {
+        // Reload the page with the chart ID as a query parameter
+        location.href = `${location.origin}${location.pathname}?chart=${chartId}`;
+      }
+
+      // Function to extract query parameter value
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Function to load chart based on query parameter
+      function loadChartFromQueryParam() {
+        const chartId = getQueryParam("chart");
+        if (chartId) {
+          loadChart(chartId);
+        }
+      }
+
+      // Call loadChartFromQueryParam when the page loads
+      window.onload = loadChartFromQueryParam;
+      function loadChart(chartId) {
+        const existingStyles = document.querySelectorAll(
+          'link[rel="stylesheet"]'
+        );
+        existingStyles.forEach((style) => {
+          console.log(style.href);
+          if (style.href.indexOf("chart") > -1) {
+            style.remove();
+          }
+        });
+
+        const existingScripts = document.querySelectorAll(
+          'script[type="application/javascript"]'
+        );
+        console.log(existingScripts);
+        existingScripts.forEach((script) => {
+          if (script.src.indexOf("chart") > -1) {
+            script.remove();
+          }
+          if (script.src.indexOf("slider") > -1) {
+            script.remove();
+          }
+        });
+
+        // Clear existing chart
+        document.getElementById("chart-base-location").innerHTML = "";
+
+        // Load corresponding styles
+        const styleLink = document.createElement("link");
+        styleLink.rel = "stylesheet";
+        styleLink.type = "text/css";
+        styleLink.href = `/charts/${chartId}/${chartId}.css`;
+        document.head.appendChild(styleLink);
+
+        // Load corresponding HTML
+        fetch(`/charts/${chartId}/${chartId}.html`)
+          .then((response) => response.text())
+          .then((html) => {
+            document.getElementById("chart-base-location").innerHTML = html;
+            setTimeout(() => {
+              if (chartId == "chart3") {
+                const script3 = document.createElement("script");
+                script3.type = "application/javascript";
+                script3.src = `/charts/${chartId}/slider.js`;
+                document.body.appendChild(script3);
+              }
+              // Load corresponding chart script dynamically
+              const script = document.createElement("script");
+              script.src = `/charts/${chartId}/${chartId}.js`;
+              script.type = "application/javascript";
+              document.body.appendChild(script);
+
+              script.onload = function () {
+                // Call your function here
+                loadMainChart();
+              };
+            }, 100);
+          });
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

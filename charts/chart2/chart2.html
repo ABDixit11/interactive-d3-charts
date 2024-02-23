@@ -1,0 +1,20 @@
+<div class="myContainer">
+  <h3 class="text-center mb-4">Text Analysis</h3>
+  <hr />
+  <form class="border border-dark rounded p-2 mb-2 bg-light shadow-sm">
+    <label for="wordbox">Enter text here</label>
+    <textarea class="form-control mb-2 mt-1" id="wordbox" rows="8"></textarea>
+    <button type="button" class="btn btn-dark mb-1" onclick="submitText();">
+      Submit text
+    </button>
+  </form>
+  <div id="pie_div" class="border border-dark rounded bg-light shadow-sm">
+    Distribution of characters
+    <svg id="pie_svg"></svg>
+  </div>
+  <div id="bar_div" class="border border-dark rounded bg-light shadow-sm">
+    <span id="hover-message">Count for selected character is NONE.</span>
+    <svg id="bar_svg"></svg>
+  </div>
+</div>
+&nbsp;&nbsp;&nbsp;

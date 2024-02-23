@@ -1,0 +1,33 @@
+svg {
+    width: 580px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #D3D3D3;
+    border-radius: 3px;
+}
+
+.myContainer {
+    margin: auto;
+    width: 1210px;
+}
+
+#bar_div,
+#pie_div {
+    float: left;
+    width: 600px;
+    padding: 10px;
+}
+
+#bar_div {
+    float: right;
+}
+
+.tooltip {
+    opacity: 0;
+    background-color: #fff;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+}

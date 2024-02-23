@@ -1,0 +1,140 @@
+<div class="container-fluid">
+  <h3 class="text-center mb-4">Global Developments</h3>
+  <div class="row">
+    <div id="myDataVis" class="col-9">
+      <svg id="beeswarm-svg" width="950px" height="550px"></svg>
+    </div>
+    <div class="col-3 ml-2">
+      <div class="row">
+        <div class="col-12 h5">Control Panel</div>
+        <div class="col-12 pb-3">
+          <div class="h6">X-Axis</div>
+          <select class="w-100" id="x-axis-attribute"></select>
+        </div>
+        <div class="col-12 pb-3">
+          <div class="h6">Size</div>
+          <select class="w-100" id="size-attribute"></select>
+        </div>
+        <div class="col-12 pb-3">
+          <div class="row">
+            <div class="col-12 h6">Regions</div>
+            <div class="checkbox-container">
+              <input
+                class="checkbox-input"
+                type="checkbox"
+                value="North America"
+                id="NA"
+                checked
+              />
+              <span class="color-dot"></span>
+              <label class="checkbox-container-label" for="NA">
+                North America
+              </label>
+            </div>
+            <div class="checkbox-container">
+              <input
+                class="checkbox-input"
+                type="checkbox"
+                value="Sub-Saharan Africa"
+                id="SSA"
+              />
+              <span class="color-dot"></span>
+              <label class="checkbox-container-label" for="SSA">
+                Sub-Saharan Africa
+              </label>
+            </div>
+            <div class="checkbox-container">
+              <input
+                class="checkbox-input"
+                type="checkbox"
+                value="East Asia & Pacific"
+                id="EAP"
+              />
+              <span class="color-dot"></span>
+              <label class="checkbox-container-label" for="EAP">
+                East Asia & Pacific
+              </label>
+            </div>
+            <div class="checkbox-container">
+              <input
+                class="checkbox-input"
+                type="checkbox"
+                value="South Asia"
+                id="SA"
+              />
+              <span class="color-dot"></span>
+              <label class="checkbox-container-label" for="SA">
+                South Asia
+              </label>
+            </div>
+            <div class="checkbox-container">
+              <input
+                class="checkbox-input"
+                type="checkbox"
+                value="Latin America & Caribbean"
+                id="LAC"
+              />
+              <span class="color-dot"></span>
+              <label class="checkbox-container-label" for="LAC">
+                Latin America & Caribbean
+              </label>
+            </div>
+            <div class="checkbox-container">
+              <input
+                class="checkbox-input"
+                type="checkbox"
+                value="Middle East & North Africa"
+                id="MENA"
+              />
+              <span class="color-dot"></span>
+              <label class="checkbox-container-label" for="MENA">
+                Middle East & North Africa
+              </label>
+            </div>
+            <div class="checkbox-container">
+              <input
+                class="checkbox-input"
+                type="checkbox"
+                value="Europe & Central Asia"
+                id="ECA"
+              />
+              <span class="color-dot"></span>
+              <label class="checkbox-container-label" for="ECA">
+                Europe & Central Asia
+              </label>
+            </div>
+            <div class="mt-2">
+              <button id="selectAll" class="btn btn-outline-primary">
+                Select All
+              </button>
+              <button id="deselectAll" class="btn btn-outline-primary">
+                Deselect All
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="h6">Year</div>
+          <input type="number" id="yearInput" min="1980" max="2013" step="1" />
+          <span
+            >1980<input
+              type="range"
+              id="yearSlider"
+              min="1980"
+              max="2013"
+              step="1"
+            />2013</span
+          >
+          <div class="mt-2">
+            <button id="playButton" class="btn btn-outline-success">
+              Play
+            </button>
+            <button id="pauseButton" class="btn btn-outline-danger">
+              Pause
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
